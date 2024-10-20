@@ -1,13 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
-    <color name="app_name_color">#070000</color>
+    <color name="my_light_primary">#FF6200EE</color> <!-- Ejemplo de color -->
+    <color name="my_dark_primary">#FF3700B3</color> <!-- Ejemplo de color -->
+    <color name="my_accent_color">#FF03DAC5</color> <!-- Ejemplo de color -->
 
 
-        <color name="colorPrimary">#1E88E5</color>
-        <color name="colorAccent">#1976D2</color>
-        <color name="textColor">#777777</color>
+        <color name="blue">#04B2D9</color>
+        <color name="gray">#A1A1A1</color>
 
 
 </resources>

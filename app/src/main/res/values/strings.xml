@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">OrientaTec</string>
+    <string name="orientatec_text">ORIENTATEC</string>
+    <string name="boton_iniciemos">Iniciemos</string>
+    <string name="iniciar_sesion">INICIAR SESIÓN</string>
+    <string name="boton_registrar">REGISTRAR</string>
+    <string name="boton_ingresar">INGRESAR</string>
 </resources>

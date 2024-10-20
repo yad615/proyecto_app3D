@@ -1,9 +1,8 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.OrientaTecProyecto" parent="">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+<resources>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar"> <!-- O puedes usar otro tema AppCompat -->
+        <!-- Personaliza tu tema aquí -->
+        <item name="colorPrimary">@color/my_light_primary</item>
+        <item name="colorPrimaryDark">@color/my_dark_primary</item>
+        <item name="colorAccent">@color/my_accent_color</item>
     </style>
-
-    <style name="Theme.OrientaTecProyecto" parent="Base.Theme.OrientaTecProyecto" />
 </resources>

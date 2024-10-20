@@ -1,90 +1,228 @@
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".RegistroActivity">
-    <!-- Gradiente superior -->
+
+    <!-- Gradient Background (use drawable) -->
     <View
         android:id="@+id/topGradient"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@drawable/gradient_top"
-        app:layout_constraintHeight_percent="0.25"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-    <!-- Sección central -->
-    <LinearLayout
-        android:id="@+id/middleSection"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/topGradient"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="424dp"
+        android:layout_height="138dp"
+        android:background="@drawable/gradient_vistas"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/bottomGradient"
-        android:orientation="vertical"
-        android:background="#FFFFFF"
-        android:gravity="center">
-        <!-- Contenedor de registro -->
+        app:layout_constraintHeight_percent="0.17"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <!-- Form Card -->
+
+    <!-- Register Button -->
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/middleSection"
+        android:layout_width="372dp"
+        android:layout_height="425dp"
+        android:layout_margin="20dp"
+
+        android:padding="@dimen/padding"
+        app:cardCornerRadius="30dp"
+        app:cardElevation="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.091"
+        tools:ignore="DuplicateIds">
+
         <LinearLayout
-            android:id="@+id/registerContainer"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/form_background"
-            android:padding="40dp"
-            android:elevation="10dp"
+            android:layout_height="424dp"
             android:gravity="center"
             android:orientation="vertical">
+
             <!-- Título -->
             <TextView
                 android:id="@+id/registerTitle"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="40dp"
                 android:gravity="center"
-                android:text="REGISTRARSE"
+                android:text="REGÍSTRATE"
                 android:textColor="#04B2D9"
-                android:textSize="28sp"
+                android:textSize="34sp"
                 android:textStyle="bold" />
-            <!-- Entrada de nombre -->
-            <!-- Entrada de correo electrónico -->
-            <!-- Entrada de contraseña -->
+
+            <!-- Icono de usuario y campo de texto: Nombre completo -->
+            <LinearLayout
+                android:layout_width="327dp"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/userIcon"
+                    android:layout_width="56dp"
+                    android:layout_height="29dp"
+                    android:layout_marginEnd="10dp"
+                    android:contentDescription="User Icon"
+                    android:src="@drawable/nombre" />
+
+                <EditText
+                    android:id="@+id/fullNameInput"
+                    android:layout_width="288dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="@android:color/darker_gray"
+                    android:hint="NOMBRE COMPLETO"
+                    android:inputType="textPersonName"
+                    android:textColorHint="@color/gray"
+                    android:textStyle="italic" />
+            </LinearLayout>
+
+            <!-- Icono de correo y campo de texto: Correo electrónico -->
+            <LinearLayout
+                android:layout_width="329dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/emailIcon"
+                    android:layout_width="54dp"
+                    android:layout_height="29dp"
+                    android:layout_marginEnd="10dp"
+                    android:contentDescription="Email Icon"
+                    android:src="@drawable/correo" />
+
+                <EditText
+                    android:id="@+id/emailInput"
+                    android:layout_width="288dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="@android:color/darker_gray"
+                    android:hint="CORREO ELECTRÓNICO"
+                    android:inputType="textEmailAddress"
+                    android:textColorHint="@color/gray"
+                    android:textStyle="italic" />
+            </LinearLayout>
+
+            <!-- Icono de seguridad y campo de texto: Contraseña -->
+            <LinearLayout
+                android:layout_width="331dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/passwordIcon"
+                    android:layout_width="52dp"
+                    android:layout_height="29dp"
+                    android:layout_marginEnd="10dp"
+                    android:contentDescription="Password Icon"
+                    android:src="@drawable/segurity" />
+
+                <EditText
+                    android:id="@+id/passwordInput"
+                    android:layout_width="234dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="@android:color/darker_gray"
+                    android:hint="CONTRASEÑA"
+                    android:inputType="textPassword"
+                    android:textColorHint="@color/gray"
+                    android:textStyle="italic" />
+
+                <ImageView
+                    android:id="@+id/eyeIcon"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_marginStart="10dp"
+                    android:contentDescription="Show/Hide Password"
+                    android:src="@drawable/ojo"
+                android:clickable="true"
+                android:focusable="true" />
+            </LinearLayout>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/middleSection"
+                android:layout_width="308dp"
+                android:layout_height="45dp"
+                android:layout_margin="20dp"
+                android:layout_marginTop="172dp"
+                android:padding="30dp"
+                app:cardCornerRadius="30dp"
+                app:cardElevation="10dp"
+                tools:ignore="DuplicateIds">
+
+
+                <TextView
+                    android:layout_width="268dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="¿Ya tienes una cuenta? Inicia Sesión"
+                    android:textColor="#09A9BD"
+                    android:textSize="16sp"
+                    android:textStyle="italic" />
+
+
+            </androidx.cardview.widget.CardView>
+
         </LinearLayout>
-        <!-- Botón de registro -->
-        <!-- Mensaje -->
+    </androidx.cardview.widget.CardView>
 
-        <Button
-            android:id="@+id/boton_register"
-            android:layout_width="200dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="70dp"
-            android:background="@drawable/button_gradient"
-            android:text="REGISTRAR"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/registerMessage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="¡INICIA UNA GRAN EXPERIENCIA!"
-            android:textColor="#888888"
-            android:textSize="16sp"
-            android:layout_marginTop="10dp"
-            android:gravity="center" />
-    </LinearLayout>
-    <!-- Gradiente inferior -->
     <View
         android:id="@+id/bottomGradient"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@drawable/gradient_bottom"
+        android:layout_width="421dp"
+        android:layout_height="102dp"
+        android:background="@drawable/gradient_vistas"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.25" />
+        app:layout_constraintHeight_percent="0.17"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/startButton"
+        android:layout_width="232dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="26dp"
+        android:background="@drawable/background_button"
+        android:gravity="center"
+        android:text="Registrar"
+        android:textColor="#FFFFFF"
+        android:textSize="23sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/subText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/middleSection" />
+
+    <TextView
+        android:id="@+id/subText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:gravity="center"
+        android:text="¡INICIA UNA GRAN EXPERIENCIA!"
+        android:textSize="18sp"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/startButton" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="-5dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-

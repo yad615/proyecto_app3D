@@ -1,7 +1,6 @@
 package com.chavez.patrick.orientatecproyecto
 
 import android.content.Intent
-import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -11,26 +10,23 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
 class BienvenidaActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+        enableEdgeToEdge() // Permitir que el contenido se extienda hasta los bordes de la pantalla
         setContentView(R.layout.activity_bienvenida)
 
+        // Aplicar márgenes para el sistema de barras
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
-        // Crear un degradado programáticamente para el botón
-        val gradient = GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, intArrayOf(0xFFFF5733.toInt(), 0xFFC70039.toInt()))
-        gradient.cornerRadius = 8f // Ajustar el radio de las esquinas
-
-        // Obtener el botón y establecer el fondo
+        // Obtener el botón y establecer el click listener
         val startButton = findViewById<Button>(R.id.startButton)
-        startButton.background = gradient
+        startButton.setOnClickListener { goToRegistroActivity(it) }
     }
-
 
     // Método para navegar a RegistroActivity
     fun goToRegistroActivity(view: View) {

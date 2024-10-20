@@ -36,14 +36,15 @@ android {
 }
 
 dependencies {
-
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material)
-    implementation(libs.androidx.activity)
-    implementation(libs.androidx.constraintlayout)
-    implementation(libs.play.services.maps)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
+    // Dependencias de AndroidX
+    implementation(libs.androidx.core.ktx) // Biblioteca de utilidades de Android
+    implementation(libs.androidx.appcompat) // Biblioteca de AppCompat para compatibilidad
+    implementation(libs.material) // Biblioteca de Material Design
+    implementation(libs.androidx.activity) // Biblioteca de actividades de AndroidX
+    implementation(libs.androidx.constraintlayout) // Biblioteca para ConstraintLayout
+    implementation(libs.play.services.maps) // Servicios de Google Maps
+    // Dependencias para pruebas
+    testImplementation(libs.junit) // Dependencia de JUnit para pruebas unitarias
+    androidTestImplementation(libs.androidx.junit) // Dependencia de JUnit para pruebas de UI
+    androidTestImplementation(libs.androidx.espresso.core) // Biblioteca de Espresso para pruebas de UI
 }
