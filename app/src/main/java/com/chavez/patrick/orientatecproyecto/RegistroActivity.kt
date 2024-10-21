@@ -7,15 +7,18 @@ import android.text.InputType
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import android.graphics.Paint
 
 class RegistroActivity : AppCompatActivity() {
     private lateinit var fullNameInput: EditText
     private lateinit var emailInput: EditText
     private lateinit var passwordInput: EditText
     private lateinit var startButton: Button
-    private lateinit var eyeIcon: ImageView // Declara el ícono de ojo
+    private lateinit var eyeIcon: ImageView
+    private lateinit var loginText: TextView
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,15 +29,27 @@ class RegistroActivity : AppCompatActivity() {
         emailInput = findViewById(R.id.emailInput)
         passwordInput = findViewById(R.id.passwordInput)
         startButton = findViewById(R.id.startButton)
-        eyeIcon = findViewById(R.id.eyeIcon) // Inicializa el ícono de ojo
+        eyeIcon = findViewById(R.id.eyeIcon)
+        loginText = findViewById(R.id.loginText)
+
+        // Agrega subrayado al TextView
+        loginText.paintFlags = loginText.paintFlags or Paint.UNDERLINE_TEXT_FLAG
 
         startButton.setOnClickListener {
-            registerUser()
+            registerUser() // Validar y registrar al usuario
+            navigateToInicioActivity() // Navegar a la nueva vista
         }
 
         // Configura el listener para el ícono de ojo
         eyeIcon.setOnClickListener {
             togglePasswordVisibility()
+        }
+
+        // Configura el listener para el TextView de inicio de sesión
+        loginText.setOnClickListener {
+            // Inicia LoginActivity cuando se toca el texto
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
         }
     }
 
@@ -43,7 +58,7 @@ class RegistroActivity : AppCompatActivity() {
         val email = emailInput.text.toString()
         val password = passwordInput.text.toString()
 
-        // Aquí puedes agregar la lógica para guardar el usuario
+        // Validar que los campos no estén vacíos
         if (fullName.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty()) {
             // Aquí puedes agregar la lógica para el registro en una base de datos
             Toast.makeText(this, "Usuario registrado: $fullName", Toast.LENGTH_SHORT).show()
@@ -57,12 +72,18 @@ class RegistroActivity : AppCompatActivity() {
         if (passwordInput.inputType == InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD) {
             // Oculta la contraseña
             passwordInput.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
-            eyeIcon.setImageResource(R.drawable.ojo) // Cambia al ícono de ojo cerrado
+            eyeIcon.setImageResource(R.drawable.cerrar_ojo) // Cambia al ícono de ojo cerrado
         } else {
             // Muestra la contraseña
             passwordInput.inputType = InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
             eyeIcon.setImageResource(R.drawable.ojo) // Cambia al ícono de ojo abierto
         }
         passwordInput.setSelection(passwordInput.text.length) // Mantener el cursor al final
+    }
+
+    // Método para navegar a la nueva actividad InicioActivity
+    private fun navigateToInicioActivity() {
+        val intent = Intent(this, InicioActivity::class.java) // Crear el intent
+        startActivity(intent) // Iniciar la nueva actividad
     }
 }

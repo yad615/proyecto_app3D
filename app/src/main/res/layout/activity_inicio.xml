@@ -1,0 +1,50 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".InicioActivity">
+
+    <!-- Contenedor para el título con fondo degradado -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="88dp"
+        android:layout_gravity="center">
+
+        <!-- Fondo degradado -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="78dp"
+            android:background="@drawable/gradient_vistas" />
+
+        <!-- Título o mensaje de bienvenida -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="2dp"
+            android:text="ORIENTATEC"
+            android:textColor="#FFFFFF"
+            android:textSize="37sp"
+            android:textStyle="bold" />
+    </FrameLayout>
+
+
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="606dp"
+        android:layout_gravity="center"
+        android:layout_weight="1" />
+
+    <!-- Bottom Navigation Bar -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@drawable/gradient_vistas"
+        app:menu="@menu/bottom_nav_menu" />
+
+</LinearLayout>

@@ -43,6 +43,10 @@ dependencies {
     implementation(libs.androidx.activity) // Biblioteca de actividades de AndroidX
     implementation(libs.androidx.constraintlayout) // Biblioteca para ConstraintLayout
     implementation(libs.play.services.maps) // Servicios de Google Maps
+
+    // Google Play Services Auth para inicio de sesión con Google
+    implementation("com.google.android.gms:play-services-auth:20.5.0")
+
     // Dependencias para pruebas
     testImplementation(libs.junit) // Dependencia de JUnit para pruebas unitarias
     androidTestImplementation(libs.androidx.junit) // Dependencia de JUnit para pruebas de UI

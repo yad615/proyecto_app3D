@@ -4,4 +4,5 @@
     <string name="iniciar_sesion">INICIAR SESIÓN</string>
     <string name="boton_registrar">REGISTRAR</string>
     <string name="boton_ingresar">INGRESAR</string>
+    <string name="app_id">tu_app_id</string>
 </resources>
