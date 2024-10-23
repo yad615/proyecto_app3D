@@ -11,6 +11,8 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import android.graphics.Paint
+import okhttp3.*
+import java.io.IOException
 
 class RegistroActivity : AppCompatActivity() {
     private lateinit var fullNameInput: EditText
@@ -19,6 +21,8 @@ class RegistroActivity : AppCompatActivity() {
     private lateinit var startButton: Button
     private lateinit var eyeIcon: ImageView
     private lateinit var loginText: TextView
+
+    private val client = OkHttpClient()
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,7 +41,6 @@ class RegistroActivity : AppCompatActivity() {
 
         startButton.setOnClickListener {
             registerUser() // Validar y registrar al usuario
-            navigateToInicioActivity() // Navegar a la nueva vista
         }
 
         // Configura el listener para el ícono de ojo
@@ -47,7 +50,6 @@ class RegistroActivity : AppCompatActivity() {
 
         // Configura el listener para el TextView de inicio de sesión
         loginText.setOnClickListener {
-            // Inicia LoginActivity cuando se toca el texto
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
@@ -61,7 +63,37 @@ class RegistroActivity : AppCompatActivity() {
         // Validar que los campos no estén vacíos
         if (fullName.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty()) {
             // Aquí puedes agregar la lógica para el registro en una base de datos
-            Toast.makeText(this, "Usuario registrado: $fullName", Toast.LENGTH_SHORT).show()
+            val requestBody = """
+                {
+                    "fullName": "$fullName",
+                    "email": "$email",
+                    "password": "$password"
+                }
+            """.trimIndent()
+
+            val request = Request.Builder()
+                .url("http://tu-servidor.com/api/usuarios") // Cambia por la URL de tu servidor
+                .post(RequestBody.create(MediaType.parse("application/json"), requestBody))
+                .build()
+
+            client.newCall(request).enqueue(object : Callback {
+                override fun onFailure(call: Call, e: IOException) {
+                    e.printStackTrace()
+                }
+
+                override fun onResponse(call: Call, response: Response) {
+                    if (response.isSuccessful) {
+                        runOnUiThread {
+                            Toast.makeText(this@RegistroActivity, "Usuario registrado: $fullName", Toast.LENGTH_SHORT).show()
+                            navigateToInicioActivity() // Navegar a la nueva vista
+                        }
+                    } else {
+                        runOnUiThread {
+                            Toast.makeText(this@RegistroActivity, "Error al registrar el usuario", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
+            })
         } else {
             Toast.makeText(this, "Por favor completa todos los campos.", Toast.LENGTH_SHORT).show()
         }
@@ -81,7 +113,6 @@ class RegistroActivity : AppCompatActivity() {
         passwordInput.setSelection(passwordInput.text.length) // Mantener el cursor al final
     }
 
-    // Método para navegar a la nueva actividad InicioActivity
     private fun navigateToInicioActivity() {
         val intent = Intent(this, InicioActivity::class.java) // Crear el intent
         startActivity(intent) // Iniciar la nueva actividad
